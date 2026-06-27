@@ -1,0 +1,17 @@
+input:
+  path: data/raw/transactions.csv
+
+output:
+  balance_report_path: data/reports/balances.csv
+
+validation:
+  required_columns:
+    - transaction_id
+    - user_id
+    - timestamp
+    - type
+    - amount
+  supported_transaction_types:
+    - deposit
+    - withdrawal
+  amount_rule: amounts must be numeric and greater than zero
