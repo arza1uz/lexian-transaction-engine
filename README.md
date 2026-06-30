@@ -2,7 +2,9 @@
 
 ![CI](https://github.com/arza1uz/lexian-transaction-engine/actions/workflows/ci.yml/badge.svg)
 
-Lexian Transaction Engine is the first product repository in a fictional fintech engineering portfolio. It implements a small, production-minded batch transaction pipeline that loads synthetic CSV transactions, validates them, processes deposits and withdrawals, and generates user balance reports.
+Lexian Transaction Engine is the first active product in the **Lexian Engineering Portfolio**, a fictional fintech engineering ecosystem built to demonstrate production-minded data and software engineering practices.
+
+The current system implements a small batch transaction pipeline that loads synthetic CSV transactions, validates them, processes deposits and withdrawals, and generates user balance reports.
 
 Lexian is a fictional fintech created for a professional engineering portfolio. This repository uses synthetic data only and does not contain real customer, employer, or production information.
 
@@ -12,7 +14,9 @@ Lexian serves people who are underserved or rejected by traditional banking inst
 
 ## Role In The Lexian Ecosystem
 
-This repository represents the first standalone product service in the future Lexian ecosystem. It focuses only on transaction processing. Future systems such as reconciliation, risk, fraud, data platform, ML platform, and AI platform are intentionally referenced in documentation, not implemented here.
+This repository focuses only on transaction processing and operational readiness foundations. It is not a tutorial project and it is not a giant monorepo.
+
+Future systems such as reconciliation, risk, fraud, data platform, ML platform, and AI platform are intentionally referenced as Planned work in the broader portfolio, not implemented here.
 
 ## Architecture
 
@@ -35,6 +39,7 @@ flowchart LR
 - Processes deposits and withdrawals into user balances.
 - Writes a simple balance report to `data/reports/balances.csv`.
 - Runs from the command line with `python -m lexian_transaction_engine.main`.
+- Documents operational-readiness work through RFCs and tests.
 
 ## Skills Demonstrated
 
@@ -43,7 +48,8 @@ flowchart LR
 - Batch data processing with pandas.
 - Unit and integration testing with pytest.
 - Lightweight CI, linting, and repository hygiene.
-- Product documentation, ADRs, RFCs, and portfolio storytelling.
+- Product documentation, ADRs, RFCs, and engineering tradeoff communication.
+- Early observability patterns such as execution context and structured logging.
 
 ## Repository Structure
 
@@ -97,6 +103,8 @@ This repository will connect conceptually to future standalone repositories:
 
 Each future product should remain understandable on its own while contributing to the larger Lexian engineering story.
 
+For the full portfolio navigation, see the [Portfolio Hub](https://github.com/arza1uz/Portfolio).
+
 ## Status
 
-V1 batch transaction processing is implemented for synthetic data. The repository is ready for incremental expansion without becoming a giant monorepo.
+V1 batch transaction processing is implemented for synthetic data. Operational readiness work is in progress. Planned future capabilities are documented clearly and should not be read as completed projects.
