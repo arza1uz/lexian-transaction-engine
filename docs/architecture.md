@@ -1,6 +1,6 @@
 # Architecture
 
-Lexian Transaction Engine v1 is a batch-oriented CSV pipeline. It is intentionally small so the business rules are easy to inspect, test, and evolve.
+Lexian Transaction Engine V1 is a batch-oriented CSV pipeline. It is intentionally scoped so the business rules are easy to inspect, test, and evolve.
 
 ```mermaid
 flowchart LR
@@ -19,6 +19,12 @@ flowchart LR
 - `reporter.py` prepares and writes the balance report.
 - `main.py` coordinates the end-to-end pipeline.
 
+## Design Decisions
+
+- Batch CSV comes first because it is a realistic MVP integration pattern for early operational reporting, manual exports, and partner handoffs.
+- Simple Python modules come first because the current product needs clear business logic more than distributed infrastructure.
+- Kafka, Spark, Airflow, and cloud services are deferred until volume, latency, scheduling, or operational complexity justifies them.
+
 ## Data Contract
 
 Input transactions require these columns:
@@ -30,3 +36,7 @@ Input transactions require these columns:
 - `amount`
 
 Supported transaction types are `deposit` and `withdrawal`. Amounts must be numeric and greater than zero.
+
+## Evolution Triggers
+
+The architecture should evolve when Lexian needs persistent storage, reconciliation against external partners, scheduled workflows, near-real-time updates, graph-based auditability, or cloud operational controls.

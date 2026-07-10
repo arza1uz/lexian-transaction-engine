@@ -2,17 +2,20 @@
 
 ![CI](https://github.com/arza1uz/lexian-transaction-engine/actions/workflows/ci.yml/badge.svg)
 
-Lexian Transaction Engine is the first product repository in a fictional fintech engineering portfolio. It implements a small, production-minded batch transaction pipeline that loads synthetic CSV transactions, validates them, processes deposits and withdrawals, and generates user balance reports.
+**Production-minded batch transaction processing for a fictional fintech engineering portfolio.**
 
-Lexian is a fictional fintech created for a professional engineering portfolio. This repository uses synthetic data only and does not contain real customer, employer, or production information.
+Lexian Transaction Engine is the first public product in the Lexian Engineering Portfolio. V1 focuses on a small but complete batch workflow: ingest synthetic transactions, validate business rules, calculate balances, generate reports, and keep the project testable, documented, and CI-ready.
 
-## Business Problem
+Lexian is fictional and uses synthetic data only. This repository does not contain real customer data, employer data, Klar internal data, or confidential information.
 
-Lexian serves people who are underserved or rejected by traditional banking institutions. Even at an early stage, the company needs trustworthy transaction processing: deposits and withdrawals must be validated, balances must be explainable, and bad input data must be rejected before it affects reporting or downstream decisions.
+## Current Status
 
-## Role In The Lexian Ecosystem
+| Version | Status | Scope |
+| --- | --- | --- |
+| V1 | Active | Batch Transaction Processing |
+| V2 | In Progress | Operational Observability |
 
-This repository represents the first standalone product service in the future Lexian ecosystem. It focuses only on transaction processing. Future systems such as reconciliation, risk, fraud, data platform, ML platform, and AI platform are intentionally referenced in documentation, not implemented here.
+V1 is intentionally scoped. Later versions will expand operational visibility, persistence, reconciliation, orchestration, graph auditability, and cloud deployment as the business scenario grows.
 
 ## Architecture
 
@@ -25,34 +28,47 @@ flowchart LR
     E --> F[Balance Report]
 ```
 
-## Current Capabilities
+## What The Pipeline Does
 
 - Loads transactions from `data/raw/transactions.csv`.
-- Validates required columns.
-- Rejects duplicate transaction IDs.
-- Rejects non-numeric, zero, or negative amounts.
+- Validates required columns and duplicate transaction IDs.
 - Rejects unsupported transaction types.
+- Rejects non-numeric, zero, or negative amounts.
 - Processes deposits and withdrawals into user balances.
-- Writes a simple balance report to `data/reports/balances.csv`.
-- Runs from the command line with `python -m lexian_transaction_engine.main`.
+- Writes a balance report to `data/reports/balances.csv`.
 
-## Skills Demonstrated
+## What This Demonstrates
 
 - Python package structure with a `src/` layout.
 - Data validation and explicit business rules.
 - Batch data processing with pandas.
 - Unit and integration testing with pytest.
-- Lightweight CI, linting, and repository hygiene.
-- Product documentation, ADRs, RFCs, and portfolio storytelling.
+- Linting with ruff.
+- CI with GitHub Actions.
+- Technical documentation with ADRs and RFCs.
+- Early observability foundations through RFC 0002 and in-progress execution tracking.
+
+## Run Locally
+
+```bash
+make install
+make run
+make test
+make lint
+```
+
+The package command is:
+
+```bash
+python -m lexian_transaction_engine.main
+```
 
 ## Repository Structure
 
 ```text
 .
-├── configs/
 ├── data/
 ├── docs/
-├── scripts/
 ├── src/lexian_transaction_engine/
 ├── tests/
 ├── Makefile
@@ -60,43 +76,27 @@ flowchart LR
 └── README.md
 ```
 
-## Run Locally
+## Roadmap
 
-```bash
-python -m pip install -e ".[dev]"
-make run
-```
+| Version | Portfolio Month | Focus |
+| --- | --- | --- |
+| V1 | Month 1 | Batch Transaction Engine |
+| V2 | Month 2 | Operational Observability |
+| V3 | Month 3 | SQL + Warehouse Foundations |
+| V4 | Month 4 | Analytics Engineering Layer |
+| V5 | Month 5 | AWS Data Pipeline Prototype |
+| V6 | Month 6 | Reconciliation + Graph Auditability |
 
-You can also run the package command directly after installation:
+The broader 12-month path lives in the [Portfolio Hub](https://github.com/arza1uz/Portfolio).
 
-```bash
-python -m lexian_transaction_engine.main
-```
+## Documentation
 
-## Run Tests
+- [Business Context](docs/business-context.md)
+- [Architecture](docs/architecture.md)
+- [Roadmap](docs/roadmap.md)
+- [ADRs](docs/adr/README.md)
+- [RFCs](docs/rfc/README.md)
 
-```bash
-make test
-make lint
-```
+## Portfolio Context
 
-## Roadmap And Learning Unlocks
-
-The current version is intentionally simple: CSV batch processing first, then validation, reporting, reconciliation, analytical storage, orchestration, streaming, cloud infrastructure, ML, and AI capabilities as business needs appear. See `docs/roadmap.md` and `docs/learning-unlocks.md`.
-
-## Future Lexian Products
-
-This repository will connect conceptually to future standalone repositories:
-
-- `lexian-reconciliation-engine`
-- `lexian-risk-engine`
-- `lexian-fraud-engine`
-- `lexian-data-platform`
-- `lexian-ml-platform`
-- `lexian-ai-platform`
-
-Each future product should remain understandable on its own while contributing to the larger Lexian engineering story.
-
-## Status
-
-V1 batch transaction processing is implemented for synthetic data. The repository is ready for incremental expansion without becoming a giant monorepo.
+This repository is not a tutorial clone and not a giant monorepo. It is a focused product repository designed to demonstrate data engineering, analytics engineering, fintech data systems, documentation, testing, and operational thinking.
