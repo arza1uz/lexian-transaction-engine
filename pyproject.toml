@@ -9,6 +9,7 @@ description = "Batch transaction processing engine for the fictional Lexian fint
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "duckdb>=1.0.0",
     "pandas>=2.2.0",
 ]
 

@@ -16,3 +16,9 @@ run:
 	PYTHONPATH=src python -m lexian_transaction_engine.main
 
 validate: lint test run
+
+init-warehouse:
+	PYTHONPATH=src python scripts/init_warehouse.py
+
+demo-warehouse:
+	PYTHONPATH=src python scripts/demo_warehouse.py

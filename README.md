@@ -13,7 +13,8 @@ Lexian is fictional and uses synthetic data only. This repository does not conta
 | Version | Status | Scope |
 | --- | --- | --- |
 | V1 | Active | Batch Transaction Processing |
-| V2 | In Progress | Operational Observability |
+| V2 | Active | Operational Observability |
+| V3 | In Progress | Local Analytical Warehouse |
 
 V1 is intentionally scoped. Later versions will expand operational visibility, persistence, reconciliation, orchestration, graph auditability, and cloud deployment as the business scenario grows.
 
@@ -82,18 +83,31 @@ python -m lexian_transaction_engine.main
 | --- | --- | --- |
 | V1 | Month 1 | Batch Transaction Engine |
 | V2 | Month 2 | Operational Observability |
-| V3 | Month 3 | SQL + Warehouse Foundations |
+| V3 | Month 3 | SQL + Warehouse Foundations / Local Analytical Warehouse |
 | V4 | Month 4 | Analytics Engineering Layer |
 | V5 | Month 5 | AWS Data Pipeline Prototype |
 | V6 | Month 6 | Reconciliation + Graph Auditability |
 
 The broader 12-month path lives in the [Portfolio Hub](https://github.com/arza1uz/Portfolio).
 
+## Local Analytical Warehouse
+
+V3 introduces a local analytical warehouse using DuckDB. The goal is to make transaction outputs, balances, and pipeline execution metadata queryable with SQL before introducing cloud infrastructure or dbt.
+
+The first warehouse layer includes:
+
+- raw transaction rows for auditability,
+- validated transaction facts,
+- user balance facts,
+- pipeline execution metadata,
+- reusable SQL queries for operational analysis.
+
 ## Documentation
 
 - [Business Context](docs/business-context.md)
 - [Architecture](docs/architecture.md)
 - [Roadmap](docs/roadmap.md)
+- [Local Analytical Warehouse](warehouse/README.md)
 - [ADRs](docs/adr/README.md)
 - [RFCs](docs/rfc/README.md)
 
