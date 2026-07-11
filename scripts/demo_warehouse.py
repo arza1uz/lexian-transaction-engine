@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 from pathlib import Path
+from uuid import uuid4
 
 import pandas as pd
 
@@ -17,6 +18,10 @@ DATABASE_PATH = Path("data/warehouse/lexian_demo.duckdb")
 
 
 def main() -> None:
+    run_id = uuid4().hex[:8]
+    execution_id = f"exec_demo_{run_id}"
+    user_id = f"usr_demo_{run_id}"
+
     connection = connect_warehouse(DATABASE_PATH)
 
     try:
@@ -25,21 +30,21 @@ def main() -> None:
         raw_transactions = pd.DataFrame(
             [
                 {
-                    "execution_id": "exec_demo_001",
+                    "execution_id": execution_id,
                     "source_file": "data/raw/transactions.csv",
                     "source_row_number": 1,
-                    "transaction_id": "txn_001",
-                    "user_id": "usr_001",
+                    "transaction_id": f"txn_demo_{run_id}_001",
+                    "user_id": user_id,
                     "transaction_timestamp_raw": "2026-01-01T10:00:00",
                     "transaction_type": "deposit",
                     "amount_raw": "100.00",
                 },
                 {
-                    "execution_id": "exec_demo_001",
+                    "execution_id": execution_id,
                     "source_file": "data/raw/transactions.csv",
                     "source_row_number": 2,
-                    "transaction_id": "txn_002",
-                    "user_id": "usr_001",
+                    "transaction_id": f"txn_demo_{run_id}_002",
+                    "user_id": user_id,
                     "transaction_timestamp_raw": "2026-01-02T10:00:00",
                     "transaction_type": "withdrawal",
                     "amount_raw": "25.00",
@@ -50,18 +55,18 @@ def main() -> None:
         fact_transactions = pd.DataFrame(
             [
                 {
-                    "execution_id": "exec_demo_001",
-                    "transaction_id": "txn_001",
-                    "user_id": "usr_001",
+                    "execution_id": execution_id,
+                    "transaction_id": f"txn_demo_{run_id}_001",
+                    "user_id": user_id,
                     "transaction_timestamp": datetime(2026, 1, 1, 10, 0, tzinfo=UTC),
                     "transaction_type": "deposit",
                     "amount": 100.00,
                     "signed_amount": 100.00,
                 },
                 {
-                    "execution_id": "exec_demo_001",
-                    "transaction_id": "txn_002",
-                    "user_id": "usr_001",
+                    "execution_id": execution_id,
+                    "transaction_id": f"txn_demo_{run_id}_002",
+                    "user_id": user_id,
                     "transaction_timestamp": datetime(2026, 1, 2, 10, 0, tzinfo=UTC),
                     "transaction_type": "withdrawal",
                     "amount": 25.00,
@@ -73,8 +78,8 @@ def main() -> None:
         user_balances = pd.DataFrame(
             [
                 {
-                    "execution_id": "exec_demo_001",
-                    "user_id": "usr_001",
+                    "execution_id": execution_id,
+                    "user_id": user_id,
                     "balance": 75.00,
                 }
             ]
@@ -83,7 +88,7 @@ def main() -> None:
         pipeline_executions = pd.DataFrame(
             [
                 {
-                    "execution_id": "exec_demo_001",
+                    "execution_id": execution_id,
                     "started_at": datetime(2026, 1, 1, 10, 0, tzinfo=UTC),
                     "finished_at": datetime(2026, 1, 1, 10, 1, tzinfo=UTC),
                     "duration_seconds": 60.0,
@@ -103,6 +108,8 @@ def main() -> None:
         write_fact_transactions(connection, fact_transactions)
         write_user_balances(connection, user_balances)
         write_pipeline_executions(connection, pipeline_executions)
+
+        print(f"Demo execution_id: {execution_id}")
 
         print("User balances:")
         for row in execute_query(connection, "user_balances.sql"):
