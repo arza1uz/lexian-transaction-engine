@@ -12,9 +12,10 @@ Lexian is fictional and uses synthetic data only. This repository does not conta
 
 | Version | Status | Scope |
 | --- | --- | --- |
-| V1 | Active | Batch Transaction Processing |
-| V2 | Active | Operational Observability |
-| V3 | In Progress | Local Analytical Warehouse |
+| V1 | Released | Batch Transaction Processing |
+| V2 | Released | Operational Observability |
+| V3 | Released | Local Analytical Warehouse |
+| V3.1 | Released | Warehouse Analytics Queries |
 
 V1 is intentionally scoped. Later versions will expand operational visibility, persistence, reconciliation, orchestration, graph auditability, and cloud deployment as the business scenario grows.
 
@@ -47,7 +48,7 @@ flowchart LR
 - Linting with ruff.
 - CI with GitHub Actions.
 - Technical documentation with ADRs and RFCs.
-- Early observability foundations through RFC 0002 and in-progress execution tracking.
+- Operational observability foundations through RFC 0002, including execution metadata, lifecycle logs, and failure visibility.
 
 ## Run Locally
 
@@ -84,6 +85,7 @@ python -m lexian_transaction_engine.main
 | V1 | Month 1 | Batch Transaction Engine |
 | V2 | Month 2 | Operational Observability |
 | V3 | Month 3 | SQL + Warehouse Foundations / Local Analytical Warehouse |
+| V3.1 | Month 3 | Warehouse Analytics Queries |
 | V4 | Month 4 | Analytics Engineering Layer |
 | V5 | Month 5 | AWS Data Pipeline Prototype |
 | V6 | Month 6 | Reconciliation + Graph Auditability |

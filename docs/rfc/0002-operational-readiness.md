@@ -1,5 +1,9 @@
 # RFC 0002: Operational Readiness
 
+## Status
+
+Accepted / Released in v1.0.0
+
 ## Business Context
 
 Lexian Transaction Engine is now able to process synthetic transaction files and generate user balance reports.
@@ -38,6 +42,10 @@ Without this visibility, failures are harder to detect and investigate.
 - No dashboard.
 - No Airflow, Kafka, Spark, or cloud logging yet.
 - No persistent execution history yet.
+
+## Scope Boundary
+
+This RFC covers local execution metadata, execution context, structured logging, and lifecycle visibility. Advanced monitoring, metrics, tracing, dashboards, and cloud observability are intentionally deferred to future milestones.
 
 ## Proposed Solution
 

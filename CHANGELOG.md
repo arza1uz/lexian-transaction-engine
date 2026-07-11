@@ -1,13 +1,13 @@
 # Changelog
 
-## [Unreleased]
+## [1.2.0] - Warehouse Analytics Queries
 
 ### Added
 
 - Additional warehouse analytics queries for user balances by execution, transaction volume, pipeline health, balance validation, and anomaly detection.
 - Unit tests covering analytical SQL query execution against the local DuckDB warehouse.
 
-## [Unreleased]
+## [1.1.0] - Local Analytical Warehouse Foundation
 
 ### Added
 
@@ -18,15 +18,9 @@
 - Warehouse writer utilities for loading pandas dataframes into analytical tables.
 - Warehouse bootstrap script and Makefile target for local initialization.
 
-## [Unreleased]
+## [1.0.0] - Portfolio V1 + Operational Observability Foundation
 
-- Operational observability in progress.
-- Execution tracking in progress.
-- Structured logging in progress.
-- ExecutionContext in progress.
-- Pipeline lifecycle logs in progress.
-
-## [1.0.0] - Portfolio V1
+### Added
 
 - Professional repository structure.
 - Synthetic transaction dataset.
@@ -38,6 +32,11 @@
 - CI.
 - Documentation.
 - ADRs and RFCs.
+- Operational observability foundation.
+- Execution tracking.
+- Structured logging.
+- ExecutionContext.
+- Pipeline lifecycle logs.
 
 ## [0.1.0]
 
