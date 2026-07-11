@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Added
+
+- RFC 0003 for the local analytical warehouse design.
+- DuckDB-based local warehouse connection and schema creation utilities.
+- Initial warehouse schema for raw transactions, transaction facts, user balances, and pipeline executions.
+- SQL query examples for balances, transaction summaries, execution summaries, and data quality checks.
+- Warehouse writer utilities for loading pandas dataframes into analytical tables.
+- Warehouse bootstrap script and Makefile target for local initialization.
+
+## [Unreleased]
+
 - Operational observability in progress.
 - Execution tracking in progress.
 - Structured logging in progress.
