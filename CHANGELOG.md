@@ -4,6 +4,13 @@
 
 ### Added
 
+- Additional warehouse analytics queries for user balances by execution, transaction volume, pipeline health, balance validation, and anomaly detection.
+- Unit tests covering analytical SQL query execution against the local DuckDB warehouse.
+
+## [Unreleased]
+
+### Added
+
 - RFC 0003 for the local analytical warehouse design.
 - DuckDB-based local warehouse connection and schema creation utilities.
 - Initial warehouse schema for raw transactions, transaction facts, user balances, and pipeline executions.
