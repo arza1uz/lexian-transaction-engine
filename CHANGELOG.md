@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added Analytics Engineering Layer with reusable marts.
+- Added metrics and model definitions.
+- Added mart builder script.
+- Added tests for mart creation and validation outputs.
+
 ## [1.2.0] - Warehouse Analytics Queries
 
 ### Added

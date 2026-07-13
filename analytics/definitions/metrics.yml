@@ -1,0 +1,66 @@
+metrics:
+  - name: total_transactions
+    description: Count of validated transactions in the analytical warehouse.
+    type: count
+    grain: execution_id
+    source_model: mart_transaction_activity
+
+  - name: gross_transaction_amount
+    description: Sum of absolute transaction amounts before deposit or withdrawal sign logic.
+    type: sum
+    grain: execution_id, user_id, transaction_type
+    source_model: mart_transaction_activity
+
+  - name: net_transaction_amount
+    description: Sum of signed transaction amounts after deposit or withdrawal sign logic.
+    type: sum
+    grain: execution_id, user_id, transaction_type
+    source_model: mart_transaction_activity
+
+  - name: stored_user_balance
+    description: Balance persisted by the transaction processing pipeline.
+    type: decimal
+    grain: execution_id, user_id
+    source_model: mart_user_balances
+
+  - name: sql_calculated_user_balance
+    description: Balance recalculated from transaction facts using SQL.
+    type: decimal
+    grain: execution_id, user_id
+    source_model: mart_user_balances
+
+  - name: balance_difference
+    description: Difference between stored and SQL-calculated user balances.
+    type: decimal
+    grain: execution_id, user_id
+    source_model: mart_balance_validation
+
+  - name: valid_row_rate_pct
+    description: Percentage of source rows that passed validation.
+    type: ratio
+    grain: execution_id
+    source_model: mart_pipeline_health
+
+  - name: invalid_row_rate_pct
+    description: Percentage of source rows that failed validation.
+    type: ratio
+    grain: execution_id
+    source_model: mart_pipeline_health
+
+  - name: processing_efficiency_pct
+    description: Percentage of valid rows processed into transaction facts.
+    type: ratio
+    grain: execution_id
+    source_model: mart_pipeline_health
+
+  - name: duplicate_raw_transaction_count
+    description: Count of duplicate raw transaction identifiers by execution.
+    type: count
+    grain: execution_id
+    source_model: mart_data_quality_summary
+
+  - name: data_quality_status
+    description: Execution-level data quality outcome derived from raw, fact, balance, and pipeline metadata.
+    type: categorical
+    grain: execution_id
+    source_model: mart_data_quality_summary

@@ -1,4 +1,4 @@
-.PHONY: install test lint format run validate
+.PHONY: install test lint format run validate build-marts
 
 install:
 	python -m pip install -e ".[dev]"
@@ -22,3 +22,6 @@ init-warehouse:
 
 demo-warehouse:
 	PYTHONPATH=src python scripts/demo_warehouse.py
+
+build-marts:
+	PYTHONPATH=src python scripts/build_marts.py

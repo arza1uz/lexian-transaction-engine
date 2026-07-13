@@ -1,0 +1,50 @@
+models:
+  - name: mart_user_balances
+    description: User balance mart comparing stored balances to SQL-calculated balances.
+    grain: execution_id, user_id
+    primary_key: execution_id, user_id
+    source_tables:
+      - fact_user_balances
+      - fact_transactions
+    owner: analytics_engineering
+    status: active
+
+  - name: mart_transaction_activity
+    description: Transaction activity mart aggregated by execution, user, and transaction type.
+    grain: execution_id, user_id, transaction_type
+    primary_key: execution_id, user_id, transaction_type
+    source_tables:
+      - fact_transactions
+    owner: analytics_engineering
+    status: active
+
+  - name: mart_pipeline_health
+    description: Pipeline health mart exposing execution-level operational metrics and status.
+    grain: execution_id
+    primary_key: execution_id
+    source_tables:
+      - fact_pipeline_executions
+    owner: analytics_engineering
+    status: active
+
+  - name: mart_balance_validation
+    description: Balance validation mart with severity classification for reconciliation readiness.
+    grain: execution_id, user_id
+    primary_key: execution_id, user_id
+    source_tables:
+      - fact_user_balances
+      - fact_transactions
+    owner: analytics_engineering
+    status: active
+
+  - name: mart_data_quality_summary
+    description: Execution-level data quality mart comparing raw, fact, balance, and pipeline records.
+    grain: execution_id
+    primary_key: execution_id
+    source_tables:
+      - raw_transactions
+      - fact_transactions
+      - fact_user_balances
+      - fact_pipeline_executions
+    owner: analytics_engineering
+    status: active

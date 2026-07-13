@@ -37,6 +37,14 @@ Lexian is fictional and uses synthetic data only. This repository does not conta
 - Pipeline health
 - Anomaly checks
 
+**Analytics Engineering Layer**
+
+- Reusable analytical marts
+- Metric definitions
+- Model definitions
+- Validation models
+- SQL-based business outputs
+
 ## Architecture
 
 ```mermaid
@@ -47,6 +55,7 @@ flowchart LR
     D --> E[Reporter]
     D --> F[DuckDB Warehouse]
     F --> G[SQL Analytics Queries]
+    F --> H[Analytics Marts]
 ```
 
 ## Run Locally
@@ -68,6 +77,7 @@ python -m lexian_transaction_engine.main
 
 ```text
 .
+├── analytics/
 ├── data/
 ├── docs/
 ├── scripts/
@@ -85,6 +95,8 @@ python -m lexian_transaction_engine.main
 - [Architecture](docs/architecture.md)
 - [Development Focus](docs/development-focus.md)
 - [Local Analytical Warehouse](warehouse/README.md)
+- [Analytics Engineering Layer](analytics/README.md)
+- [RFC 0004: Analytics Engineering Layer](docs/rfc/0004-analytics-engineering-layer.md)
 - [ADRs](docs/adr/README.md)
 - [RFCs](docs/rfc/README.md)
 
