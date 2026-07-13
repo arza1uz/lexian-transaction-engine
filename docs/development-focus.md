@@ -1,6 +1,6 @@
 # Development Focus
 
-This document keeps the Lexian Transaction Engine roadmap concise and tied to concrete engineering capabilities.
+This document keeps the Lexian Transaction Engine development direction concise and tied to concrete engineering capabilities.
 
 ## Released
 

@@ -4,29 +4,38 @@
 
 **Production-minded batch transaction processing and local analytics for a fictional fintech data system.**
 
-Lexian Transaction Engine processes synthetic fintech transactions, validates business rules, calculates balances, captures operational execution context, and exposes local analytical warehouse outputs through DuckDB and SQL queries.
+Lexian Transaction Engine processes synthetic fintech transactions, validates business rules, calculates balances, captures operational execution context, and exposes local analytical warehouse outputs through DuckDB and SQL queries. Current released work includes batch processing, operational observability, local warehouse foundations, and warehouse analytics queries.
 
 Lexian is fictional and uses synthetic data only. This repository does not contain real customer data, employer data, Klar internal data, or confidential information.
 
-## Released Versions
-
-| Release | Scope |
-| --- | --- |
-| v1.0.0 | Batch transaction processing and operational observability |
-| v1.1.0 | Local analytical warehouse foundation |
-| v1.2.0 | Warehouse analytics queries |
-
 ## Current Capabilities
+
+**Transaction Processing**
 
 - Synthetic CSV transaction ingestion
 - Transaction validation
+- Deposit and withdrawal processing
 - Balance calculation
+
+**Operational Observability**
+
 - Operational execution tracking
 - Structured logging
+
+**Local Analytical Warehouse**
+
 - DuckDB local warehouse
+- Raw and fact tables
+- Execution metadata
+
+**Warehouse Analytics**
+
 - SQL analytics queries
 - Data quality and validation queries
-- Tests and CI
+- Balance validation
+- Transaction volume
+- Pipeline health
+- Anomaly checks
 
 ## Architecture
 
@@ -74,7 +83,7 @@ python -m lexian_transaction_engine.main
 
 - [Business Context](docs/business-context.md)
 - [Architecture](docs/architecture.md)
-- [Development Focus](docs/roadmap.md)
+- [Development Focus](docs/development-focus.md)
 - [Local Analytical Warehouse](warehouse/README.md)
 - [ADRs](docs/adr/README.md)
 - [RFCs](docs/rfc/README.md)
